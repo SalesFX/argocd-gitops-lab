@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-nginx
+  namespace: dev
+spec:
+  rules:
+    - host: hello-dev.localhost
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hello-nginx-dev
+                port:
+                  number: 80

@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-nginx
+  namespace: prod
+spec:
+  rules:
+    - host: hello-prod.localhost
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hello-nginx-prod
+                port:
+                  number: 80
